@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Koulen&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+::selection{
+    background: #f00;
+    color: white;
+
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+body{
+    font-family: "Inria Sans",sans-serif;
+    background: #111;
+    max-width: 100vw;
+    overflow-x:hidden;
+}
+
+section{
+    padding:64px 0;
+}
+

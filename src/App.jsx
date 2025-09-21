@@ -8,14 +8,15 @@ import Alumni from "./components/Alumni";
 import About from "./components/About";
 function App() {
     return (
-        <main className="w-full h-full bg-[#252525]">
+        <main className="w-full h-full bg-black">
             <>
                 <Navbar />
-                <div className="h-[46px] w-full "></div>
-                <SpecialCarousel name="Landing" />
+                {/* <div className="h-[46px] w-full "></div>
+                {/* <SpecialCarousel name="Landing" /> */}
+                {/* <div className="absolute  text-xl"> */} 
                 <Team />
                 {/* <Flagship/> */}
-                <SpecialCarousel name="Events" />
+                {/* <SpecialCarousel name="Events" /> */}
                 <Alumni/>
                 <About/>
                 <ContactUs />

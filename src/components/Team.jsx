@@ -3,7 +3,7 @@ import MemberCard from "./MemberCard";
 import { TeamData } from "../data/team";
 function Team() {
     return (
-        <section id="Team" className="bg-white">
+        <section id="Team" className="bg-gray-700">
             <h1 className=" font-bold text-center text-xl">Team</h1>
             {TeamData.Faculty.length != 0 && (
                 <div

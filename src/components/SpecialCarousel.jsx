@@ -1,96 +1,54 @@
+import React from "react";
 import { Carousel } from "@material-tailwind/react";
-import { Events } from "../data/eventCarousel";
 import { LandingCarousel } from "../data/landingCarousel";
-function SpecialCarousel({ arrows = true, name = "" }) {
-    return (
-        <Carousel
-            id={name}
-            className="overflow-hidden  h-48 sm:h-[75vh]"
-            autoplay={true}
-            loop={true}
-            autoplayDelay={4000}
-            prevArrow={
-                arrows
-                    ? null
-                    : () => {
-                          return null;
-                      }
-            }
-            nextArrow={
-                arrows
-                    ? null
-                    : () => {
-                          return null;
-                      }
-            }
-            navigation={({ setActiveIndex, activeIndex, length }) => {
-                if (name == "Landing") {
-                    document.onkeydown = (e) => {
-                        if (e.key === "ArrowRight") {
-                            setActiveIndex(
-                                (prevIndex) => (prevIndex + 1) % length
-                            );
-                        } else if (e.key === "ArrowLeft") {
-                            setActiveIndex(
-                                (prevIndex) => (prevIndex - 1 + length) % length
-                            );
-                        }
-                    };
-                }
-                return (
-                    <div className="absolute bottom-4 left-2/4 z-30 flex -translate-x-2/4 gap-2">
-                        {new Array(length).fill("").map((_, i) => (
-                            <span
-                                key={i}
-                                className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                                    activeIndex === i
-                                        ? "w-8 bg-white"
-                                        : "w-4 bg-white/50"
-                                }`}
-                                onClick={() => setActiveIndex(i)}
-                            />
-                        ))}
-                    </div>
-                );
-            }}
-        >
-            {name == "Landing"
-                ? LandingCarousel.map((img, index) => {
-                      return (
-                          <img
-                              key={index}
-                              style={{
-                                  filter:
-                                      name == "Landing"
-                                          ? "brightness(0.8)"
-                                          : null,
-                              }}
-                              className="h-full w-full object-cover"
-                              src={img}
-                              alt={`Image ${index}`}
-                          />
-                      );
-                  })
-                : Events.map((Event, index) => {
-                      try {
-                          return (
-                              <div
-                                  style={{
-                                      background: `url(${Event.img}`,
-                                  }}
-                                  key={index}
-                                  className="text-white w-full h-full object-fit !bg-center !bg-no-repeat !bg-cover bg-[#00000033]"
-                              >
-                                  <div className="bg-[linear-gradient(90deg,rgba(0,0,0,1),rgba(0,0,0,0.4))] opacity-100 transition-opacity duration-200 flex flex-col justify-center items-center md:justify-end md:items-start text-lg font-[Koulen] p-10 w-full h-full object-cover text-center">
-                                      <h1>{Event.name}</h1>
-                                      <p className="text-sm md:text-md">{Event.desc}</p>
-                                  </div>
-                              </div>
-                          );
-                      } catch (e) {}
-                  })}
-        </Carousel>
-    );
-}
 
-export default SpecialCarousel;
+// Landing-only carousel where the TITLE and the GRADIENT OVERLAY are fixed
+// (they do NOT move with the slides). Slides are background images that move
+// underneath the fixed overlay/title.
+export default function LandingCarouselComponent({ autoplay = true, autoplayDelay = 4000, loop = true }) {
+  return (
+    <div className="relative w-full h-48 sm:h-[75vh] overflow-hidden">
+
+      {/* Carousel (slides only) */}
+      <Carousel
+        className="w-full h-full"
+        autoplay={autoplay}
+        loop={loop}
+        autoplayDelay={autoplayDelay}
+        prevArrow={null}
+        nextArrow={null}
+        navigation={false}
+      >
+        {LandingCarousel.map((src, idx) => (
+          <div
+            key={idx}
+            className="w-full h-full bg-center bg-no-repeat bg-cover"
+            style={{ backgroundImage: `url('${src}')` }}
+          />
+        ))}
+      </Carousel>
+
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{
+          background:
+            "linear-gradient(175deg, rgba(0,0,0,1) 1%, rgba(0,0,0,1) 2%, rgba(0,0,0,1) 0.5%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0) 70%)",
+        }}
+      />
+
+      <div className="absolute left-6 top-6 z-20 w-auto">
+        <h1 className="hidden lg:block text-3xl lg:text-8xl font-bold text-white leading-tight">
+          <span className="text-yellow-300">Civil</span>  and <span className="text-green-500">Environmental</span> Engineering Forum 
+        </h1>
+      </div>
+
+      <div className="absolute inset-0 flex items-center justify-center z-20 px-6 lg:hidden">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white text-center">
+          Civil and Environmental Engineering Forum 
+        </h1>
+      </div>
+
+    </div>
+  );
+}

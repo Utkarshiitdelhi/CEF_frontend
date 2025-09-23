@@ -51,7 +51,7 @@ export default function FancyNavbar() {
   return (
     <header
       className={`fixed top-4 left-0 right-0 mx-auto z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 lg:px-8 ${
-        scrolled ? "backdrop-blur-md bg-black/50 shadow-lg rounded-xl" : "bg-transparent"
+        scrolled ? "backdrop-blur-md bg-black/50 shadow-lg rounded-xl" : "backdrop-blur-md bg-black/50 shadow-lg rounded-xl"
       }`}
       style={{ maxWidth: "1200px" }}
     >

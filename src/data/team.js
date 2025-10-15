@@ -13,7 +13,8 @@ export const TeamData = {
         name: "Deepanshu Shirole",
         desg: "Faculty Advisor",
         img: "/assets/team members/professors/Deepanshu-Shirole_Vice-president.jpg",
-        linkedIn: "https://www.linkedin.com/in/deepanshu-shirole-ph-d-0442b21b3/",
+        linkedIn:
+          "https://www.linkedin.com/in/deepanshu-shirole-ph-d-0442b21b3/",
       },
       {
         name: "Souvik Das",
@@ -32,39 +33,40 @@ export const TeamData = {
         linkedIn: "https://www.linkedin.com/in/amisha-42a27b244/",
       },
     ],
-    Tier2: [
-      {
-        name: "Sujas",
-        desg: "Developer",
-        img: "/assets/team members/core/me.jpg",
-        linkedIn: "https://www.linkedin.com/in/sujasaggarwal/",
-      },
-      {
-        name: "Vipinish",
-        desg: "Events & Marketing",
-        img: "/assets/team members/core/vipinsh.jpeg",
-        linkedIn: "https://www.linkedin.com/in/vipinsh-mehra-871398260/",
-      },
-      {
-        name: "Simran",
-        desg: "Design",
-        img: "/assets/team members/core/simran.jpg",
-        linkedIn: "https://www.linkedin.com/in/simran-gupta-8762a9298/",
-      },
-      {
-        name: "Shreyash",
-        desg: "Finance & Operations",
-        img: "/assets/team members/core/shreyas.jpeg",
-        linkedIn: "https://www.linkedin.com/in/shreyas-supnekar-237364250/",
-      },
-      {
-        name: "Keshav",
-        desg: "Content & Publicity",
-        img: "/assets/team members/core/keshav.jpg",
-        linkedIn: "https://www.linkedin.com/in/keshav-agrawal-15818a24b/",
-      },
-    ],
+    Tier2: [],
   },
+  Coordinators: [
+    {
+      name: "Sujas",
+      desg: "Coordinator",
+      img: "/assets/team members/core/me.jpg",
+      linkedIn: "https://www.linkedin.com/in/sujasaggarwal/",
+    },
+    {
+      name: "Vipinish",
+      desg: "Coordinator",
+      img: "/assets/team members/core/vipinsh.jpeg",
+      linkedIn: "https://www.linkedin.com/in/vipinsh-mehra-871398260/",
+    },
+    {
+      name: "Simran",
+      desg: "Coordinator",
+      img: "/assets/team members/core/simran.jpg",
+      linkedIn: "https://www.linkedin.com/in/simran-gupta-8762a9298/",
+    },
+    {
+      name: "Shreyash",
+      desg: "Coordinator",
+      img: "/assets/team members/core/shreyas.jpeg",
+      linkedIn: "https://www.linkedin.com/in/shreyas-supnekar-237364250/",
+    },
+    {
+      name: "Keshav",
+      desg: "Coordinator",
+      img: "/assets/team members/core/keshav.jpg",
+      linkedIn: "https://www.linkedin.com/in/keshav-agrawal-15818a24b/",
+    },
+  ],
   Executives: [
     {
       name: "Jasveer",

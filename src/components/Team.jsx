@@ -7,13 +7,13 @@ function Team() {
     <div className="w-full">
       {TeamData.Faculty.length !== 0 && (
         <div className="w-full flex flex-col gap-8 justify-center items-center px-2 py-6">
-          <h3 className="text-cyan-300/90 font-semibold uppercase tracking-widest text-xs">
+          <h3 className="text-yellow-600 font-semibold uppercase tracking-widest text-s">
             Faculty Team
           </h3>
           {TeamData.length === 0 && (
             <p className="text-white/60">No Team Members Found</p>
           )}
-          <div className="flex gap-8 md:gap-16 justify-center items-center flex-wrap">
+          {/* <div className="flex gap-8 md:gap-16 justify-center items-center flex-wrap">
             {TeamData.Faculty.Tier1.map((item, key) => (
               <MemberCard
                 designation={item.desg}
@@ -23,7 +23,7 @@ function Team() {
                 linkedIn={item.linkedIn}
               />
             ))}
-          </div>
+          </div> */}
           <div className="flex gap-8 md:gap-24 justify-center items-center flex-wrap md:mt-6">
             {TeamData.Faculty.Tier2.map((item, key) => (
               <MemberCard
@@ -40,8 +40,8 @@ function Team() {
 
       {TeamData.Core.length !== 0 && (
         <div className="w-full flex flex-col gap-8 justify-center items-center px-2 py-6">
-          <h3 className="text-cyan-300/90 font-semibold uppercase tracking-widest text-xs">
-            Core Team
+          <h3 className="text-yellow-600 font-semibold uppercase tracking-widest text-s">
+            Gen Sec
           </h3>
           {TeamData.length === 0 && (
             <p className="text-white/60">No Team Members Found</p>
@@ -62,7 +62,7 @@ function Team() {
 
       {TeamData.Coordinators && TeamData.Coordinators.length !== 0 && (
         <div className="w-full flex flex-col gap-8 justify-center items-center px-2 py-6">
-          <h3 className="text-cyan-300/90 font-semibold uppercase tracking-widest text-xs">
+          <h3 className="text-yellow-600 font-semibold uppercase tracking-widest text-s">
             Coordinators
           </h3>
           {TeamData.length === 0 && (
@@ -84,7 +84,7 @@ function Team() {
 
       {TeamData.Executives.length !== 0 && (
         <div className="w-full flex flex-col gap-8 justify-center items-center px-2 py-6">
-          <h3 className="text-cyan-300/90 font-semibold uppercase tracking-widest text-xs">
+          <h3 className="text-yellow-600 font-semibold uppercase tracking-widest text-s">
             Executives Team
           </h3>
           {TeamData.length === 0 && (

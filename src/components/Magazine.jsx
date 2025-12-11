@@ -15,7 +15,7 @@ export default function Magazine() {
           Insights, interviews, and research spotlights from the CEF community.
         </p>
         <div className="mt-4">
-          <button className="px-4 py-2 text-sm rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 text-black font-semibold shadow hover:brightness-95">
+          <button className="px-4 py-2 text-sm rounded-full bg-gradient-to-r from-yellow-700 to-brown-500 text-black font-semibold shadow hover:brightness-95">
             Read Latest
           </button>
         </div>
@@ -37,7 +37,7 @@ export default function Magazine() {
             <div className="mt-3">
               <a
                 href="#"
-                className="text-sm text-cyan-300 hover:text-cyan-200 underline underline-offset-4"
+                className="text-sm text-yellow-700 hover:text-yellow-400 underline underline-offset-4"
               >
                 Open
               </a>

@@ -22,7 +22,7 @@ export default function GuestSessions() {
             <h3 className="text-white/90 font-semibold">{s.name}</h3>
             <p className="text-white/70 text-sm mt-1">{s.speaker}</p>
             <div className="mt-4">
-              <button className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 text-black font-semibold shadow hover:brightness-95">
+              <button className="px-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-yellow-700 to-brown-500 text-black font-semibold shadow hover:brightness-95">
                 Watch Highlights
               </button>
             </div>

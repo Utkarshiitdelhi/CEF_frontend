@@ -1,14 +1,15 @@
 export const TeamData = {
   Faculty: {
-    Tier1: [
+    // Tier1: [
+
+    // ],
+    Tier2: [
       {
         name: "Vasant Matsagar",
         desg: "Head of Department",
         img: "/assets/team members/professors/Prof_Vasant_Matsagar.jpg",
         linkedIn: "https://www.linkedin.com/in/matsagar/",
       },
-    ],
-    Tier2: [
       {
         name: "Deepanshu Shirole",
         desg: "Faculty Advisor",

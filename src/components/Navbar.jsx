@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/ceflogo.png";
 
 // Self-contained SVG icon components
@@ -59,12 +60,14 @@ export default function FancyNavbar() {
     "Competitions",
     "Guest Sessions",
     "Magazine",
+    "Study Material",
     "Alumni",
     "Contact Us",
   ];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [active, setActive] = useState(menuItems[0]);
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -79,19 +82,71 @@ export default function FancyNavbar() {
     return () => (document.body.style.overflow = "auto");
   }, [isMenuOpen]);
 
+  // Keep active underline in sync with URL path/hash
+  useEffect(() => {
+    const labelFromId = (id) => {
+      const map = {
+        about: "About",
+        team: "Team",
+        events: "Events",
+        alumni: "Alumni",
+        "contact-us": "Contact Us",
+        competitions: "Competitions",
+        "guest-sessions": "Guest Sessions",
+        magazine: "Magazine",
+        "study-material": "Study Material",
+      };
+      return map[id] || "About";
+    };
+
+    if (location.pathname === "/") {
+      if (location.hash) {
+        const id = location.hash.replace("#", "");
+        setActive(labelFromId(id));
+      } else {
+        setActive("About");
+      }
+    } else {
+      const id = location.pathname.replace(/^\//, "");
+      setActive(labelFromId(id));
+    }
+  }, [location.pathname, location.hash]);
+
+  // Smooth scroll helper for on-page sections (with header offset)
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const headerOffset = 88; // ~h-20 spacer + navbar height
+    const y =
+      el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const handleSamePageClick = (e, item, id) => {
+    // If we're already on Home, do custom smooth scroll and keep URL hash in sync
+    if (location.pathname === "/") {
+      e.preventDefault();
+      setActive(item);
+      scrollToSection(id);
+      // Update hash without reloading
+      window.history.pushState(null, "", `/#${id}`);
+      // Close mobile menu if open
+      if (isMenuOpen) setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header
-      className={`fixed top-4 left-0 right-0 mx-auto z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 lg:px-8 ${
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 lg:px-8 ${
         scrolled
-          ? "backdrop-blur-md bg-black/50 shadow-lg rounded-xl"
+          ? "backdrop-blur-md bg-black/60 shadow-lg border-b border-white/10"
           : "bg-transparent"
       }`}
-      style={{ maxWidth: "1200px" }}
     >
       <nav className="flex items-center justify-between h-16">
         {/* Logo + title */}
         <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-3">
+          <NavLink to="/" className="flex items-center gap-3 no-underline">
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-xl ring-1 ring-white/10">
               <img
                 src={logo}
@@ -105,39 +160,57 @@ export default function FancyNavbar() {
               </span>
               {/* <span className="text-white/80 text-xs">Engineering Forum</span> */}
             </div>
-          </a>
+          </NavLink>
         </div>
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6">
-          <div className="flex items-center gap-1">
-            {menuItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                onClick={() => setActive(item)}
-                className={`relative px-3 py-2 rounded-md text-md font-medium transition-all duration-200 cursor-pointer select-none ${
-                  active === item
-                    ? "text-white"
-                    : "text-white/80 hover:text-white"
-                }`}
-              >
-                {item}
-                {/* animated underline */}
-                <span
-                  className={`absolute left-2 right-2 -bottom-1 h-0.5 rounded-full transition-all duration-300 bg-gradient-to-r from-cyan-300 to-blue-500 ${
-                    active === item
-                      ? "opacity-100 scale-x-100"
-                      : "opacity-0 scale-x-0"
+          <div className="flex items-center gap-4">
+            {menuItems.map((item) => {
+              const id = item.toLowerCase().replace(/\s+/g, "-");
+              const isPage = [
+                "competitions",
+                "guest-sessions",
+                "magazine",
+                "study-material",
+              ].includes(id);
+              const to = isPage ? `/${id}` : `/#${id}`;
+              const isActive =
+                active === item || (isPage && location.pathname === `/${id}`);
+
+              const LinkComp = isPage ? NavLink : NavLink; // use NavLink for both; hash handled by to
+
+              return (
+                <LinkComp
+                  key={item}
+                  to={to}
+                  onClick={(e) => {
+                    if (!isPage) {
+                      handleSamePageClick(e, item, id);
+                    } else {
+                      setActive(item);
+                    }
+                  }}
+                  className={`relative px-3 py-2 rounded-md text-sm md:text-[15px] font-medium transition-all duration-200 cursor-pointer select-none no-underline whitespace-nowrap ${
+                    isActive ? "text-white" : "text-white/80 hover:text-white"
                   }`}
-                />
-              </a>
-            ))}
+                >
+                  {item}
+                  <span
+                    className={`absolute left-2 right-2 -bottom-1 h-0.5 rounded-full transition-all duration-300 bg-gradient-to-r from-cyan-300 to-blue-500 ${
+                      isActive
+                        ? "opacity-100 scale-x-100"
+                        : "opacity-0 scale-x-0"
+                    }`}
+                  />
+                </LinkComp>
+              );
+            })}
           </div>
 
           <a
             href="#join"
-            className="ml-2 inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-sky-500 text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform hover:scale-105 transition-transform"
+            className="ml-2 inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-sky-500 text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform hover:scale-105 transition-transform no-underline"
           >
             Join Us
           </a>
@@ -191,25 +264,41 @@ export default function FancyNavbar() {
           </div>
 
           <nav className="flex flex-col gap-3">
-            {menuItems.map((item, i) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                onClick={() => {
-                  setActive(item);
-                  setIsMenuOpen(false);
-                }}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors duration-150 ${
-                  active === item
-                    ? "bg-white/6 text-white"
-                    : "text-white/80 hover:bg-white/5"
-                }`}
-                style={{ transitionDelay: `${i * 30}ms` }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
-                <span className="text-sm font-medium">{item}</span>
-              </a>
-            ))}
+            {menuItems.map((item, i) => {
+              const id = item.toLowerCase().replace(/\s+/g, "-");
+              const isPage = [
+                "competitions",
+                "guest-sessions",
+                "magazine",
+                "study-material",
+              ].includes(id);
+              const to = isPage ? `/${id}` : `/#${id}`;
+              const isActive =
+                active === item || (isPage && location.pathname === `/${id}`);
+              return (
+                <NavLink
+                  key={item}
+                  to={to}
+                  onClick={(e) => {
+                    if (!isPage) {
+                      handleSamePageClick(e, item, id);
+                    } else {
+                      setActive(item);
+                      setIsMenuOpen(false);
+                    }
+                  }}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors duration-150 ${
+                    isActive
+                      ? "bg-white/6 text-white"
+                      : "text-white/80 hover:bg-white/5"
+                  }`}
+                  style={{ transitionDelay: `${i * 30}ms` }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+                  <span className="text-sm font-medium">{item}</span>
+                </NavLink>
+              );
+            })}
           </nav>
 
           <div className="mt-6 border-t border-white/6 pt-4 flex flex-col gap-3">

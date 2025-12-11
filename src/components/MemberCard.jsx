@@ -12,56 +12,54 @@ function MemberCard({
 }) {
   return (
     <div
-      id="team-card"
-      className="relative cursor-pointer select-none w-[220px] rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.03]"
+      className="relative cursor-pointer select-none w-[220px] h-[220px] rounded-lg overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03]"
       style={{
-        background:
-          "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
-        boxShadow:
-          "0 8px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
-        backdropFilter: "blur(10px)",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
       }}
     >
-      <div
-        id="team-card-up"
-        style={{
-          background: `linear-gradient(180deg, ${color} 0%, rgba(2,6,23,0.8) 100%)`,
-        }}
-        className="relative w-full h-[120px]"
-      >
-        {year && (
-          <div className="absolute top-2 right-2 text-[10px] font-semibold bg-black/40 text-white/80 px-2 py-0.5 rounded-full">
-            {year}
-          </div>
-        )}
+      {/* Background image */}
+      <img
+        src={image}
+        alt={name}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        <div
-          id="team-card-image"
-          className="w-[160px] h-[160px] rounded-full bg-white/90 absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 border border-white/20 shadow-[0_10px_40px_rgba(14,165,233,0.25)] overflow-hidden"
-        >
-          <img src={image} alt={name} className="h-full w-full object-cover" />
-        </div>
-      </div>
+      {/* Subtle gradient overlay (uses color for a tint) */}
       <div
-        id="team-card-down"
-        className="relative w-full h-[170px] flex flex-col justify-end items-center pb-4 text-white"
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(180deg, rgba(2,6,23,0.25) 20%, rgba(2,6,23,0.45) 60%, ${color}22 100%)`,
+        }}
+      />
+
+      {/* Year badge (top-left) */}
+      {year && (
+        <div className="absolute top-2 left-2 text-[10px] font-semibold bg-black/50 text-white/85 px-2 py-0.5 rounded-full backdrop-blur-sm">
+          {year}
+        </div>
+      )}
+
+      {/* LinkedIn icon (top-right) */}
+      <a
+        href={linkedIn}
+        target="_blank"
+        rel="noreferrer"
+        className="absolute top-2 right-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/45 backdrop-blur-sm hover:bg-black/65 transition-colors"
+        aria-label={`Open ${name}'s LinkedIn`}
       >
-        <h2 className="font-semibold text-lg text-center flex flex-col justify-center items-center">
-          <p className="flex gap-x-2 justify-center items-center">
-            <span className="text-white/90">{name}</span>
-            <a
-              target="_blank"
-              href={linkedIn}
-              rel="noreferrer"
-              className="opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <img src={link} alt="LinkedIn" width={16} className="-mt-0.5" />
-            </a>
-          </p>
-          <p className="text-xs text-white/70 mt-1 line-clamp-1 hover:line-clamp-none px-3">
+        <img src={link} alt="LinkedIn" width={14} height={14} />
+      </a>
+
+      {/* Bottom info */}
+      <div className="absolute bottom-0 left-0 right-0 p-3">
+        <div className="rounded-md bg-black/45 backdrop-blur-sm px-3 py-2 border border-white/10">
+          <h3 className="text-sm font-semibold text-white/95 truncate">
+            {name}
+          </h3>
+          <p className="text-[11px] text-white/75 mt-0.5 truncate">
             {designation}
           </p>
-        </h2>
+        </div>
       </div>
     </div>
   );

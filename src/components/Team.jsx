@@ -57,8 +57,19 @@ function Team() {
               />
             ))}
           </div>
-          <div className="flex gap-8 md:gap-16 justify-center items-center flex-wrap md:mt-6">
-            {TeamData.Core.Tier2.map((item, key) => (
+        </div>
+      )}
+
+      {TeamData.Coordinators && TeamData.Coordinators.length !== 0 && (
+        <div className="w-full flex flex-col gap-8 justify-center items-center px-2 py-6">
+          <h3 className="text-cyan-300/90 font-semibold uppercase tracking-widest text-xs">
+            Coordinators
+          </h3>
+          {TeamData.length === 0 && (
+            <p className="text-white/60">No Team Members Found</p>
+          )}
+          <div className="flex gap-10 md:gap-16 justify-center items-center flex-wrap">
+            {TeamData.Coordinators.map((item, key) => (
               <MemberCard
                 designation={item.desg}
                 name={item.name}

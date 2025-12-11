@@ -13,7 +13,7 @@ function MemberCard({
 }) {
   return (
     <div
-      className="relative cursor-pointer select-none w-[220px] h-[220px] rounded-lg overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03]"
+      className="relative cursor-pointer select-none w-[180px] h-[180px] rounded-lg overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03]"
       style={{
         boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
       }}
@@ -52,8 +52,8 @@ function MemberCard({
       </a>
 
       {/* Bottom info */}
-      <div className="absolute bottom-0 left-0 right-0 p-3">
-        <div className="rounded-md bg-black/45 backdrop-blur-sm px-3 py-2 border border-white/10">
+      <div className="absolute bottom-0 left-0 right-0 p-1">
+        <div className="rounded-md bg-black/45 backdrop-blur-sm px-2 py-1 border border-white/10">
           <h3 className="text-sm font-semibold text-white/95 truncate">
             {name}
           </h3>

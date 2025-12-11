@@ -155,8 +155,8 @@ export default function FancyNavbar() {
               />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-white font-extrabold text-sm">
-                Civil & Environmental
+              <span className="text-white font-md text-sm">
+                Civil & Environmental Engineering
               </span>
               {/* <span className="text-white/80 text-xs">Engineering Forum</span> */}
             </div>
@@ -197,7 +197,7 @@ export default function FancyNavbar() {
                 >
                   {item}
                   <span
-                    className={`absolute left-2 right-2 -bottom-1 h-0.5 rounded-full transition-all duration-300 bg-gradient-to-r from-cyan-300 to-blue-500 ${
+                    className={`absolute left-2 right-2 bottom-0.5 h-0.5 rounded-full transition-all duration-300 bg-gradient-to-r from-yellow-600 to-red-500 ${
                       isActive
                         ? "opacity-100 scale-x-100"
                         : "opacity-0 scale-x-0"
@@ -210,7 +210,7 @@ export default function FancyNavbar() {
 
           <a
             href="#join"
-            className="ml-2 inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-sky-500 text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform hover:scale-105 transition-transform no-underline"
+            className="ml-2 inline-flex items-center gap-2 bg-gradient-to-r from-yellow-600 to-gray-400 text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform hover:scale-105 transition-transform no-underline"
           >
             Join Us
           </a>

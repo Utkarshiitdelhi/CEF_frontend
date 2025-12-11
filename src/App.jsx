@@ -6,6 +6,7 @@ import CompetitionsPage from "./pages/Competitions";
 import GuestSessionsPage from "./pages/GuestSessions";
 import MagazinePage from "./pages/Magazine";
 import StudyMaterialPage from "./pages/StudyMaterial";
+import './index.css'
 
 function App() {
   return (

@@ -5,7 +5,7 @@ import cefLogo from "../assets/cefaboutus.jpg";
 
 function About() {
   return (
-    <div className="relative rounded-2xl p-6 sm:p-8 bg-white/5 ring-1 ring-white/10 backdrop-blur-md text-white">
+    <div className="relative rounded-2xl p-6 sm:p-8 bg-black/40 backdrop-blur-md text-white">
       {/* *** NEW: Use flex for a side-by-side layout ***
         - flex: Enables Flexbox
         - flex-col lg:flex-row: Stacks vertically on small screens, side-by-side on large screens

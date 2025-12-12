@@ -39,25 +39,25 @@ export const TeamData = {
   Coordinators: [
     {
       name: "Srishti",
-      desg: "Coordinator",
+      desg: "Design Coordinator",
       img: "/assets/team members/core/me.jpg",
       linkedIn: "https://www.linkedin.com/in/sujasaggarwal/",
     },
     {
       name: "Mehul",
-      desg: "Coordinator",
+      desg: "Content Coordinator",
       img: "/assets/team members/core/vipinsh.jpeg",
       linkedIn: "https://www.linkedin.com/in/vipinsh-mehra-871398260/",
     },
     {
-      name: "Parv",
-      desg: "Coordinator",
+      name: "Utkarsh",
+      desg: "Tech Coordinator",
       img: "/assets/team members/core/simran.jpg",
       linkedIn: "https://www.linkedin.com/in/simran-gupta-8762a9298/",
     },
     {
-      name: "Utkarsh",
-      desg: "Coordinator",
+      name: "Parv",
+      desg: "Finance Coordinator",
       img: "/assets/team members/core/utkarsh.jpeg",
       linkedIn: "https://www.linkedin.com/in/utkarsh-singh-27599827b/",
     },
@@ -69,7 +69,7 @@ export const TeamData = {
     },
     {
       name: "Aditya",
-      desg: "Coordinator",
+      desg: "PG Coordinator",
       img: "/assets/team members/core/aditya.jpg",
       linkedIn: "https://www.linkedin.com/in/aditya-15818a24b/",
     },

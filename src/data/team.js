@@ -63,7 +63,7 @@ export const TeamData = {
     },
     {
       name: "Utkarsh",
-      desg: "Coordinator",
+      desg: "Events Coordinator",
       img: "/assets/team members/core/keshav.jpg",
       linkedIn: "https://www.linkedin.com/in/keshav-agrawal-15818a24b/",
     },

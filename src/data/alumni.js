@@ -21,4 +21,11 @@ export const AlumniData = [
     linkedIn: "#",
     year: "2024",
   },
+  {
+    name: "Amisha",
+    desg: "Research Analyst, JMK Research",
+    img: "/assets/alumni/amishaMaam.jpg",
+    linkedIn: "#",
+    year: "2025",
+  }
 ];

@@ -14,9 +14,6 @@ function MemberCard({
   return (
     <div
       className="relative cursor-pointer select-none w-[180px] h-[180px] rounded-lg overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03]"
-      style={{
-        boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
-      }}
     >
       {/* Background image */}
       <img
